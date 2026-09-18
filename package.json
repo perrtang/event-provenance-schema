@@ -1,0 +1,12 @@
+{
+  "name": "@perrtang/event-provenance-schema",
+  "version": "0.1.0",
+  "description": "Open JSON Schemas for traceable public-information events and source provenance.",
+  "files": ["schemas", "examples"],
+  "scripts": { "test": "node --test" },
+  "keywords": ["json-schema", "provenance", "civic-tech", "events", "corrections"],
+  "author": "Perr Tang <perr.tang@gmail.com>",
+  "license": "MIT",
+  "repository": { "type": "git", "url": "git+https://github.com/perrtang/event-provenance-schema.git" },
+  "engines": { "node": ">=20" }
+}

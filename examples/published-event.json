@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "0.1",
+  "eventId": "evt_river-closure_2026-09-19",
+  "canonicalUrl": "https://example.org/events/evt_river-closure_2026-09-19",
+  "title": "Harbour authority temporarily closes river access after water-quality alert",
+  "summary": "The authority issued a temporary access restriction while an independent laboratory reviews water samples.",
+  "status": "published",
+  "occurredAt": "2026-09-19T06:00:00Z",
+  "updatedAt": "2026-09-19T08:30:00Z",
+  "storyThread": { "id": "thread_river-water-quality", "relation": "development" },
+  "sources": [
+    { "id": "src_authority_notice", "publisher": "Example Harbour Authority", "url": "https://authority.example/notices/river-access", "title": "Temporary river access restriction", "publishedAt": "2026-09-19T06:00:00Z", "role": "primary_material" },
+    { "id": "src_public_media", "publisher": "Example Public Media", "url": "https://media.example/news/river-access", "title": "Laboratory review follows river access restriction", "publishedAt": "2026-09-19T07:15:00Z", "role": "public_interest_media" }
+  ],
+  "licenseBoundary": { "articleTextIncluded": false, "redistributionAllowed": false, "attributionRequired": true, "note": "This record contains an original event summary and source metadata only." }
+}

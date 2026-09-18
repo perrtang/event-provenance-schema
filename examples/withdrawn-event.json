@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "0.1",
+  "eventId": "evt_river-closure_2026-09-19",
+  "title": "Harbour authority temporarily closes river access after water-quality alert",
+  "status": "withdrawn",
+  "updatedAt": "2026-09-19T10:00:00Z",
+  "sources": [
+    { "id": "src_authority_notice", "publisher": "Example Harbour Authority", "url": "https://authority.example/notices/river-access", "title": "Temporary river access restriction", "publishedAt": "2026-09-19T06:00:00Z", "role": "primary_material" }
+  ],
+  "notices": [
+    { "type": "withdrawal", "issuedAt": "2026-09-19T10:00:00Z", "message": "The original notice was withdrawn by the issuing authority." }
+  ],
+  "licenseBoundary": { "articleTextIncluded": false, "redistributionAllowed": false, "attributionRequired": true }
+}

@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/perrtang/event-provenance-schema/schemas/event-provenance.schema.json",
+  "title": "Event Provenance Record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "eventId", "title", "status", "updatedAt", "sources", "licenseBoundary"],
+  "properties": {
+    "schemaVersion": { "const": "0.1" },
+    "eventId": { "type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{2,127}$" },
+    "canonicalUrl": { "type": "string", "format": "uri" },
+    "title": { "type": "string", "minLength": 8, "maxLength": 220 },
+    "summary": { "type": "string", "minLength": 8, "maxLength": 2000 },
+    "status": { "enum": ["published", "corrected", "withdrawn", "superseded"] },
+    "occurredAt": { "type": "string", "format": "date-time" },
+    "updatedAt": { "type": "string", "format": "date-time" },
+    "storyThread": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "relation"],
+      "properties": {
+        "id": { "type": "string", "minLength": 3, "maxLength": 128 },
+        "relation": { "enum": ["root", "development", "context", "resolution"] }
+      }
+    },
+    "sources": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/source" }
+    },
+    "notices": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/notice" }
+    },
+    "licenseBoundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["articleTextIncluded", "redistributionAllowed"],
+      "properties": {
+        "articleTextIncluded": { "const": false },
+        "redistributionAllowed": { "type": "boolean" },
+        "attributionRequired": { "type": "boolean", "default": true },
+        "note": { "type": "string", "maxLength": 500 }
+      }
+    }
+  },
+  "$defs": {
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "publisher", "url", "title", "publishedAt", "role"],
+      "properties": {
+        "id": { "type": "string", "minLength": 3, "maxLength": 128 },
+        "publisher": { "type": "string", "minLength": 1, "maxLength": 200 },
+        "url": { "type": "string", "format": "uri" },
+        "title": { "type": "string", "minLength": 1, "maxLength": 500 },
+        "publishedAt": { "type": "string", "format": "date-time" },
+        "role": { "enum": ["primary_material", "wire_report", "public_interest_media", "specialist_analysis", "general_reporting", "aggregation", "unknown"] },
+        "excerpt": { "type": "string", "maxLength": 500 }
+      }
+    },
+    "notice": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type", "issuedAt", "message"],
+      "properties": {
+        "type": { "enum": ["correction", "withdrawal", "source_removed", "license_change"] },
+        "issuedAt": { "type": "string", "format": "date-time" },
+        "message": { "type": "string", "minLength": 1, "maxLength": 1000 },
+        "replacementEventId": { "type": "string", "minLength": 3, "maxLength": 128 }
+      }
+    }
+  }
+}
